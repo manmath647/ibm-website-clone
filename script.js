@@ -21,4 +21,18 @@ $(document).ready(function() {
             });
         }
     );
+    // Mega Menu Interactions: Update right content title and active state on click
+    $('.mega-sidebar-link').click(function(e) {
+        e.preventDefault(); // Prevent page scroll jump
+        e.stopPropagation(); // Prevent Bootstrap dropdown from closing
+        
+        // Remove active class from all sidebar links
+        $('.mega-sidebar-link').removeClass('active');
+        // Add active class to the currently clicked link
+        $(this).addClass('active');
+        
+        // Update the title in the right content area to match the clicked link's text
+        var newTitle = $(this).text();
+        $('.mega-content-title').html(newTitle + ' &rarr;');
+    });
 });
